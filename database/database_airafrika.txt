@@ -1,0 +1,94 @@
+CREATE TABLE admins (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE clients (
+  id SERIAL PRIMARY KEY,
+  code INT NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  prenom VARCHAR(50) NOT NULL,
+  phone INT NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE vols (
+  id SERIAL PRIMARY KEY,
+  ville_depart VARCHAR(50) NOT NULL,
+  ville_arrivee VARCHAR(50) NOT NULL,
+  depart_time TIMESTAMP NOT NULL,
+  arrive_time TIMESTAMP NOT NULL,
+  nb_place INT NOT NULL CHECK (nb_place <= 30),
+  type_vols VARCHAR(50) NOT NULL,
+  nb_place_dispo INT NOT NULL
+);
+CREATE TABLE aeroport (
+  id SERIAL PRIMARY KEY,
+  nom VARCHAR(50) NOT NULL,
+  ville VARCHAR(50) NOT NULL
+);
+CREATE TABLE escales (
+  id SERIAL PRIMARY KEY,
+  aeroport VARCHAR(50) NOT NULL,
+  heure TIMESTAMP NOT NULL,
+  id_vol_prochaine INT,
+  id_aeroport INT,
+  FOREIGN KEY (id_vol_prochaine) REFERENCES vols (id),
+  FOREIGN KEY (id_aeroport) REFERENCES aeroport (id)
+);
+
+CREATE TABLE reservations (
+  id SERIAL PRIMARY KEY,
+  date_reservation TIMESTAMP NOT NULL,
+  estannulee BOOLEAN NOT NULL,
+  tariftotalMad FLOAT NOT NULL,
+  tariftotaleuro FLOAT NOT NULL,
+  id_client INT NOT NULL,
+  id_escale INT,
+  FOREIGN KEY (id_client) REFERENCES clients (id),
+  FOREIGN KEY (id_escale) REFERENCES escales (id)
+);
+
+CREATE TABLE societe (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE extras (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  tarifMad FLOAT NOT NULL,
+  tarifeuro FLOAT NOT NULL,
+  id_escale INT,
+  FOREIGN KEY (id_escale) REFERENCES escales (id)
+);
+
+CREATE TABLE vols_reservation (
+  id SERIAL PRIMARY KEY,
+  id_reservation INT,
+  id_vols INT,
+  FOREIGN KEY (id_reservation) REFERENCES reservations (id),
+  FOREIGN KEY (id_vols) REFERENCES vols (id)
+);
+
+CREATE TABLE extras_reservation (
+  id SERIAL PRIMARY KEY,
+  id_reservation INT,
+  id_extra INT,
+  FOREIGN KEY (id_reservation) REFERENCES reservations (id),
+  FOREIGN KEY (id_extra) REFERENCES extras (id)
+);
+
+
+CREATE TABLE paiement (
+  id SERIAL PRIMARY KEY,
+  tarifMad FLOAT NOT NULL,
+  tarifeuro FLOAT NOT NULL,
+  id_client INT,
+  FOREIGN KEY (id_client) REFERENCES clients (id)
+);
+
+
