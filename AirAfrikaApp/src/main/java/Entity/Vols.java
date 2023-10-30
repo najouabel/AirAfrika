@@ -37,11 +37,6 @@ public class Vols {
     @OneToMany(mappedBy = "volsByIdVols")
     private Collection<VolsReservation> volsReservationsById;
 
-    @ManyToOne
-    @JoinColumn(name = "id_societe", referencedColumnName = "id")
-    private Societe id_societe;
-
-
     public int getId() {
         return id;
     }
@@ -106,14 +101,6 @@ public class Vols {
         this.nbPlaceDispo = nbPlaceDispo;
     }
 
-    public Societe getId_societe() {
-        return id_societe;
-    }
-
-    public void setId_societe(Societe societe) {
-        this.id_societe = societe;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,6 +148,4 @@ public class Vols {
     public void setVolsReservationsById(Collection<VolsReservation> volsReservationsById) {
         this.volsReservationsById = volsReservationsById;
     }
-
-
 }

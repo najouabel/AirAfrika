@@ -35,8 +35,7 @@ public class Reservations {
    // @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     private Clients clientsByIdClient;
     @ManyToOne
-    @JoinColumn(name = "id_escale", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-
+    //@JoinColumn(name = "id_escale", referencedColumnName = "id")
     private Escales escalesByIdEscale;
     @OneToMany(mappedBy = "reservationsByIdReservation")
     private Collection<VolsReservation> volsReservationsById;
@@ -48,7 +47,6 @@ public class Reservations {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public Timestamp getDateReservation() {
         return dateReservation;

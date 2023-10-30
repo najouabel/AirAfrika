@@ -17,14 +17,23 @@
       <class>Entity.Vols</class>
       <class>Entity.VolsReservation</class>
       <properties>
-          <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/airafrikaapp"/>
-          <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-          <property name="javax.persistence.jdbc.user" value="postgres"/>
-          <property name="javax.persistence.jdbc.password" value="najoua"/>
-          <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+          <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost:5432/airafrikaapp"/>
+          <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>
+          <property name="toplink.jdbc.user" value="postgres"/>
+          <property name="toplink.jdbc.password" value="najoua"/>
+          <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/airafrikaapp"/>
+          <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+          <property name="hibernate.connection.username" value="postgres"/>
+          <property name="hibernate.connection.password" value="najoua"/>
+          <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/airafrikaapp"/>
+          <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
+          <property name="openjpa.ConnectionUserName" value="postgres"/>
+          <property name="openjpa.ConnectionPassword" value="najoua"/>
+          <property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/airafrikaapp"/>
+          <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
+          <property name="eclipselink.jdbc.user" value="postgres"/>
+          <property name="eclipselink.jdbc.password" value="najoua"/>
           <property name="hibernate.show_sql" value="true"/>
-          <property name="hibernate.hbm2ddl.auto" value="update"/>
-          <property name="javax.persistence.transactionType" value="RESOURCE_LOCAL"/>
       </properties>
   </persistence-unit>
 </persistence>
