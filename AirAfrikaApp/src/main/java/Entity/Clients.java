@@ -28,6 +28,7 @@ public class Clients {
     @Basic
     @Column(name = "password")
     private String password;
+
     @OneToMany(mappedBy = "clientsByIdClient")
     private Collection<Paiement> paiementsById;
     @OneToMany(mappedBy = "clientsByIdClient")
@@ -40,6 +41,10 @@ public class Clients {
     public void setId(int id) {
         this.id = id;
     }
+
+
+
+
 
     public int getCode() {
         return code;

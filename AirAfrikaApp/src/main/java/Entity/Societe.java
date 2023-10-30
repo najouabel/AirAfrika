@@ -2,6 +2,8 @@ package Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Societe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +13,9 @@ public class Societe {
     @Basic
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "id_societe")
+    private Collection<Vols> volssocieteById;
 
     public int getId() {
         return id;
